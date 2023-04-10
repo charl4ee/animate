@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Drag and Drop Example</title>
+  <title>GROK - Different types of data</title>
   <style>
     .drag-box {
       width: 200px;
@@ -23,7 +23,7 @@
     }
     .drop-box {
       width: 400px;
-      height: 100px;
+      height: 50px;
       border: 2px dashed #ddd;
       margin: 20px;
       padding: 10px;
@@ -32,13 +32,17 @@
   </style>
 </head>
 <body>
-  <h1>Drag and Drop Example</h1>
-  <p>Which color do you prefer?</p>
-  <div class="drag-box" id="drag-box-1" draggable="true">Purple</div>
-  <div class="drag-box" id="drag-box-2" draggable="true">Green</div>
+  <h1>Different types of data</h1>
+  <p>Numbers with a decimal place (real numbers) are known as floats.</p>
+  <p>In Python 3, normal division will return a float.</p>
+  <p>What will this output?</p>
+  <p>print(15/3)</p>
+  <div class="drag-box" id="drag-box-1" draggable="true">5</div>
+  <div class="drag-box" id="drag-box-2" draggable="true">5.0</div>	
   <div class="drop-box" id="drop-box" ondrop="drop(event)" ondragover="allowDrop(event)">
     Drop your answer here
   </div>
+  <p id = "msg"></p>
   <script>
     function allowDrop(event) {
       event.preventDefault();
@@ -51,9 +55,9 @@
       var data = event.dataTransfer.getData("text");
       event.target.appendChild(document.getElementById(data));
       if (data === "drag-box-1") {
-        alert("Your answer is Purple");
+        msg.textContent = "Incorrect - normal division will return a float - 5.0";
       } else if (data === "drag-box-2") {
-        alert("Your answer is Green");
+        msg.textContent = "Smart work!";
       }
     }
     var boxes = document.querySelectorAll('.drag-box');
